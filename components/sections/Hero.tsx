@@ -188,13 +188,13 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
         </motion.div>
       </div>
 
-      {/* Main flex container */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-4 pt-[42vh] md:flex-row md:items-center md:pt-0 sm:px-6 lg:px-8">
+      {/* Main flex container - left-first layout */}
+      <div className="relative z-10 flex w-full flex-col px-6 pt-[42vh] md:pt-0 md:items-start">
         {/* ---------------------------------------------------------------- */}
         {/* Left / bottom: text content                                       */}
         {/* ---------------------------------------------------------------- */}
         <motion.div
-          className="flex w-full flex-col justify-center py-12 md:w-[55%] md:py-24 md:pr-12"
+          className="flex w-full flex-col justify-center py-12 md:w-1/2 md:py-24 md:pl-12 md:pr-8"
           variants={{ ...contentVariants, ...staggerChildren }}
           initial="hidden"
           animate="visible"
@@ -259,7 +259,7 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
         {/* Right: image (desktop only)                                       */}
         {/* ---------------------------------------------------------------- */}
         <motion.div
-          className="relative hidden h-[80vh] w-full max-w-[520px] overflow-hidden md:flex md:w-[45%] md:rounded-2xl md:shadow-2xl"
+          className="relative hidden md:block md:absolute md:inset-y-0 md:right-12 md:w-[45%] overflow-hidden md:rounded-2xl md:shadow-2xl"
           variants={imageVariants}
           initial="hidden"
           animate="visible"
