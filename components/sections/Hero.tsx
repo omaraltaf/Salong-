@@ -7,6 +7,7 @@ import {
   useMotionTemplate,
 } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 // ---------------------------------------------------------------------------
@@ -175,10 +176,12 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           className="size-full"
           style={{ transform: imageTransform }}
         >
-          <img
+          <Image
             src={imageUrl}
             alt="Blue Point frisørsalong"
-            className="size-full object-cover object-top"
+            fill
+            className="object-cover object-top"
+            priority
           />
           {/* Gradient overlay fading into dark section below */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[var(--color-secondary)]" />
@@ -266,10 +269,12 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
             className="absolute inset-0 scale-110"
             style={{ transform: imageTransform }}
           >
-            <img
+            <Image
               src={imageUrl}
               alt="Blue Point frisørsalong interiør"
-              className="size-full object-cover object-center"
+              fill
+              className="object-cover object-center"
+              priority
             />
           </motion.div>
 

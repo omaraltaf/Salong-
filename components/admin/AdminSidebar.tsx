@@ -12,7 +12,7 @@ import {
   FileText,
   Clock3,
   Star,
-  Image,
+  Image as ImageIcon,
   Share2,
   MessageSquare,
   Menu,
@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
   { label: 'Innhold', href: '/admin/content', icon: <FileText size={18} /> },
   { label: 'Åpningstider', href: '/admin/hours', icon: <Clock3 size={18} /> },
   { label: 'Omtaler', href: '/admin/testimonials', icon: <Star size={18} /> },
-  { label: 'Galleri', href: '/admin/gallery', icon: <Image size={18} /> },
+  { label: 'Galleri', href: '/admin/gallery', icon: <ImageIcon size={18} /> },
   { label: 'Sosiale medier', href: '/admin/social', icon: <Share2 size={18} /> },
   { label: 'Meldinger', href: '/admin/messages', icon: <MessageSquare size={18} /> },
 ]

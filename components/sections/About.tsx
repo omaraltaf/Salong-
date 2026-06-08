@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 // ---------------------------------------------------------------------------
@@ -146,9 +147,11 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
                 whileInView={{ rotate: -2 }}
                 className="origin-center"
               >
-                <img
+                <Image
                   src={image}
                   alt="Blue Point frisørsalong"
+                  width={600}
+                  height={800}
                   className="aspect-[3/4] w-full object-cover object-center"
                 />
               </motion.div>
