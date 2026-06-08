@@ -204,23 +204,23 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
             variants={fadeUp}
             className="mb-4 inline-block text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]"
           >
-            Frisørsalong · Skedsmokorset
+            Profesjonell frisørsalong · Skedsmokorset
           </motion.span>
 
           {/* Headline */}
           <motion.h1
             variants={fadeUp}
-            className="font-heading text-5xl font-bold leading-[1.07] tracking-tight text-white md:text-6xl lg:text-7xl"
+            className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl"
           >
-            {headline}
+            {headline ?? 'Din lokale frisør — moderne klipp, farge og styling'}
           </motion.h1>
 
           {/* Subheading */}
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-md text-base leading-relaxed text-white/70 md:text-lg"
+            className="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg"
           >
-            {subheading}
+            {subheading ?? 'Erfarne frisører, kvalitetsprodukter og enkel online booking. Vi skreddersyr behandlinger etter ditt ønske.'}
           </motion.p>
 
           {/* CTA buttons */}
@@ -252,6 +252,46 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
             <span className="text-sm">Erfarne frisører</span>
             <span className="size-1 rounded-full bg-white/30" aria-hidden="true" />
             <span className="text-sm">Gratis parkering</span>
+          </motion.div>
+
+          {/* Features strip */}
+          <motion.div variants={fadeUp} className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="flex items-start gap-3">
+              <div className="rounded-full bg-white/10 p-3 text-[var(--color-primary)]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">Erfaring</div>
+                <div className="text-xs text-white/60">Over 35 år med fagkunnskap</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="rounded-full bg-white/10 p-3 text-[var(--color-primary)]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M3 7H21V11H3V7Z" fill="currentColor" />
+                  <path d="M5 13H19V17H5V13Z" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">Kvalitetsprodukter</div>
+                <div className="text-xs text-white/60">Samarbeid med ledende varemerker</div>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <div className="rounded-full bg-white/10 p-3 text-[var(--color-primary)]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12H20C20 16.41 16.41 20 12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4V2Z" fill="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">Enkel booking</div>
+                <div className="text-xs text-white/60">Book online på få sekunder</div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
