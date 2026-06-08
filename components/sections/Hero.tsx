@@ -259,7 +259,7 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
         {/* Right: image (desktop only)                                       */}
         {/* ---------------------------------------------------------------- */}
         <motion.div
-          className="hidden md:flex md:absolute md:inset-y-0 md:right-0 md:w-1/2 overflow-hidden"
+          className="hidden md:flex md:absolute md:inset-0 overflow-hidden"
           variants={imageVariants}
           initial="hidden"
           animate="visible"
