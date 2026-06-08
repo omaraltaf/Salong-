@@ -173,7 +173,7 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           variants={imageVariants}
           initial="hidden"
           animate="visible"
-          className="size-full"
+          className="absolute inset-0 w-full h-full"
           style={{ transform: imageTransform }}
         >
           <Image
@@ -273,13 +273,13 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
               src={imageUrl}
               alt="Blue Point frisørsalong interiør"
               fill
-              className="object-cover object-center"
+              className="object-cover object-right"
               priority
             />
           </motion.div>
 
           {/* Left-edge gradient so it blends with the dark content side */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-secondary)] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-secondary)]/60 via-transparent to-transparent" />
 
           {/* Floating Google badge */}
           <GoogleBadge />
