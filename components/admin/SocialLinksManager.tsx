@@ -50,8 +50,8 @@ export default function SocialLinksManager({ links: initial }: Props) {
       const result = await createSocialLink(form)
       if (result?.error) {
         setFormError(result.error)
-      } else if (result?.data) {
-        setLinks((prev) => [...prev, result.data as SocialLink])
+      } else {
+        setLinks((prev) => [...prev, { id: crypto.randomUUID(), platform: form.platform, url: form.url, is_active: true }])
         setForm({ platform: '', url: '' })
       }
     } catch {

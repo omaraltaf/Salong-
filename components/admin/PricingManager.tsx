@@ -51,8 +51,12 @@ function ServiceSection({ service }: { service: Service }) {
       })
       if (result?.error) {
         setFormError(result.error)
-      } else if (result?.data) {
-        setTiers((prev) => [...prev, result.data as PricingTier])
+      } else {
+        // Optimistically add the tier; it will sync on next page reload
+        setTiers((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), service_id: service.id, label: form.label, price: priceNum, is_active: true, sort_order: 0 },
+        ])
         setForm({ label: '', price: '' })
       }
     } catch {

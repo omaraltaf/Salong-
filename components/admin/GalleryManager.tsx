@@ -6,8 +6,8 @@ import { createClient } from '@/lib/supabase/client'
 interface GalleryItem {
   id: string
   url: string
-  alt_text?: string
-  section?: string
+  alt_text: string | null
+  section: 'hero' | 'about' | 'gallery' | null
   sort_order: number
   is_active: boolean
   created_at: string
@@ -48,7 +48,7 @@ export default function GalleryManager({ items: initial }: Props) {
         .insert({
           url: urlInput.trim(),
           alt_text: altInput.trim() || null,
-          section: sectionInput,
+          section: sectionInput as 'hero' | 'about' | 'gallery',
           sort_order: items.length,
           is_active: true,
         })

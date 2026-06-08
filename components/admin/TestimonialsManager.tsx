@@ -78,8 +78,17 @@ export default function TestimonialsManager({ testimonials: initial }: Props) {
       const result = await createTestimonial(form)
       if (result?.error) {
         setFormError(result.error)
-      } else if (result?.data) {
-        setTestimonials((prev) => [...prev, result.data as Testimonial])
+      } else {
+        const newItem: Testimonial = {
+          id: crypto.randomUUID(),
+          author_name: form.author_name,
+          content: form.content,
+          rating: form.rating,
+          is_published: false,
+          sort_order: testimonials.length,
+          created_at: new Date().toISOString(),
+        }
+        setTestimonials((prev) => [...prev, newItem])
         setShowModal(false)
         setForm({ author_name: '', content: '', rating: 5 })
       }

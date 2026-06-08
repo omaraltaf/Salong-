@@ -6,165 +6,358 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       services: {
-        Row: ServiceRow
-        Insert: Omit<ServiceRow, 'id' | 'created_at'>
-        Update: Partial<Omit<ServiceRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          duration_minutes: number
+          price_from: number | null
+          price_to: number | null
+          category: 'dame' | 'herre' | 'barn' | 'behandling'
+          icon: string | null
+          is_active: boolean
+          sort_order: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          duration_minutes: number
+          price_from?: number | null
+          price_to?: number | null
+          category: 'dame' | 'herre' | 'barn' | 'behandling'
+          icon?: string | null
+          is_active?: boolean
+          sort_order?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          duration_minutes?: number
+          price_from?: number | null
+          price_to?: number | null
+          category?: 'dame' | 'herre' | 'barn' | 'behandling'
+          icon?: string | null
+          is_active?: boolean
+          sort_order?: number
+          created_at?: string
+        }
+        Relationships: []
       }
       pricing: {
-        Row: PricingRow
-        Insert: Omit<PricingRow, 'id'>
-        Update: Partial<Omit<PricingRow, 'id'>>
+        Row: {
+          id: string
+          service_id: string
+          label: string
+          price: number
+          is_active: boolean
+          sort_order: number
+        }
+        Insert: {
+          id?: string
+          service_id: string
+          label: string
+          price: number
+          is_active?: boolean
+          sort_order?: number
+        }
+        Update: {
+          id?: string
+          service_id?: string
+          label?: string
+          price?: number
+          is_active?: boolean
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'pricing_service_id_fkey'
+            columns: ['service_id']
+            isOneToOne: false
+            referencedRelation: 'services'
+            referencedColumns: ['id']
+          }
+        ]
       }
       timeslots: {
-        Row: TimeslotRow
-        Insert: Omit<TimeslotRow, 'id' | 'created_at'>
-        Update: Partial<Omit<TimeslotRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          date: string
+          start_time: string
+          end_time: string
+          service_id: string | null
+          is_available: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          date: string
+          start_time: string
+          end_time: string
+          service_id?: string | null
+          is_available?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          date?: string
+          start_time?: string
+          end_time?: string
+          service_id?: string | null
+          is_available?: boolean
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'timeslots_service_id_fkey'
+            columns: ['service_id']
+            isOneToOne: false
+            referencedRelation: 'services'
+            referencedColumns: ['id']
+          }
+        ]
       }
       bookings: {
-        Row: BookingRow
-        Insert: Omit<BookingRow, 'id' | 'created_at'>
-        Update: Partial<Omit<BookingRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          timeslot_id: string | null
+          customer_name: string
+          customer_email: string
+          customer_phone: string
+          service_id: string | null
+          notes: string | null
+          status: 'pending' | 'confirmed' | 'cancelled'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          timeslot_id?: string | null
+          customer_name: string
+          customer_email: string
+          customer_phone: string
+          service_id?: string | null
+          notes?: string | null
+          status?: 'pending' | 'confirmed' | 'cancelled'
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          timeslot_id?: string | null
+          customer_name?: string
+          customer_email?: string
+          customer_phone?: string
+          service_id?: string | null
+          notes?: string | null
+          status?: 'pending' | 'confirmed' | 'cancelled'
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'bookings_service_id_fkey'
+            columns: ['service_id']
+            isOneToOne: false
+            referencedRelation: 'services'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'bookings_timeslot_id_fkey'
+            columns: ['timeslot_id']
+            isOneToOne: false
+            referencedRelation: 'timeslots'
+            referencedColumns: ['id']
+          }
+        ]
       }
       contact_submissions: {
-        Row: ContactSubmissionRow
-        Insert: Omit<ContactSubmissionRow, 'id' | 'created_at'>
-        Update: Partial<Omit<ContactSubmissionRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          name: string
+          email: string
+          phone: string | null
+          message: string
+          is_read: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          phone?: string | null
+          message: string
+          is_read?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          phone?: string | null
+          message?: string
+          is_read?: boolean
+          created_at?: string
+        }
+        Relationships: []
       }
       content_blocks: {
-        Row: ContentBlockRow
-        Insert: Omit<ContentBlockRow, 'id'>
-        Update: Partial<Omit<ContentBlockRow, 'id'>>
+        Row: {
+          id: string
+          key: string
+          value: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          key: string
+          value: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          key?: string
+          value?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       opening_hours: {
-        Row: OpeningHoursRow
-        Insert: Omit<OpeningHoursRow, 'id'>
-        Update: Partial<Omit<OpeningHoursRow, 'id'>>
+        Row: {
+          id: string
+          day_of_week: number
+          open_time: string | null
+          close_time: string | null
+          is_closed: boolean
+        }
+        Insert: {
+          id?: string
+          day_of_week: number
+          open_time?: string | null
+          close_time?: string | null
+          is_closed?: boolean
+        }
+        Update: {
+          id?: string
+          day_of_week?: number
+          open_time?: string | null
+          close_time?: string | null
+          is_closed?: boolean
+        }
+        Relationships: []
       }
       testimonials: {
-        Row: TestimonialRow
-        Insert: Omit<TestimonialRow, 'id' | 'created_at'>
-        Update: Partial<Omit<TestimonialRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          author_name: string
+          content: string
+          rating: number
+          is_published: boolean
+          sort_order: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          author_name: string
+          content: string
+          rating?: number
+          is_published?: boolean
+          sort_order?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          author_name?: string
+          content?: string
+          rating?: number
+          is_published?: boolean
+          sort_order?: number
+          created_at?: string
+        }
+        Relationships: []
       }
       gallery: {
-        Row: GalleryRow
-        Insert: Omit<GalleryRow, 'id' | 'created_at'>
-        Update: Partial<Omit<GalleryRow, 'id' | 'created_at'>>
+        Row: {
+          id: string
+          url: string
+          alt_text: string | null
+          section: 'hero' | 'about' | 'gallery' | null
+          sort_order: number
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          url: string
+          alt_text?: string | null
+          section?: 'hero' | 'about' | 'gallery' | null
+          sort_order?: number
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          url?: string
+          alt_text?: string | null
+          section?: 'hero' | 'about' | 'gallery' | null
+          sort_order?: number
+          is_active?: boolean
+          created_at?: string
+        }
+        Relationships: []
       }
       social_links: {
-        Row: SocialLinkRow
-        Insert: Omit<SocialLinkRow, 'id'>
-        Update: Partial<Omit<SocialLinkRow, 'id'>>
+        Row: {
+          id: string
+          platform: string
+          url: string
+          is_active: boolean
+        }
+        Insert: {
+          id?: string
+          platform: string
+          url: string
+          is_active?: boolean
+        }
+        Update: {
+          id?: string
+          platform?: string
+          url?: string
+          is_active?: boolean
+        }
+        Relationships: []
       }
     }
-    Views: Record<string, never>
-    Functions: Record<string, never>
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
     Enums: {
       service_category: 'dame' | 'herre' | 'barn' | 'behandling'
       booking_status: 'pending' | 'confirmed' | 'cancelled'
       gallery_section: 'hero' | 'about' | 'gallery'
     }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
 }
 
-// ─── Row types ────────────────────────────────────────────────────────────────
+// ─── Convenience Row type aliases ─────────────────────────────────────────────
 
-export interface ServiceRow {
-  id: string
-  name: string
-  description: string | null
-  duration_minutes: number
-  price_from: number | null
-  price_to: number | null
-  category: 'dame' | 'herre' | 'barn' | 'behandling'
-  icon: string | null
-  is_active: boolean
-  sort_order: number
-  created_at: string
-}
-
-export interface PricingRow {
-  id: string
-  service_id: string
-  label: string
-  price: number
-  is_active: boolean
-  sort_order: number
-}
-
-export interface TimeslotRow {
-  id: string
-  date: string
-  start_time: string
-  end_time: string
-  service_id: string | null
-  is_available: boolean
-  created_at: string
-}
-
-export interface BookingRow {
-  id: string
-  timeslot_id: string
-  customer_name: string
-  customer_email: string
-  customer_phone: string
-  service_id: string
-  notes: string | null
-  status: 'pending' | 'confirmed' | 'cancelled'
-  created_at: string
-}
-
-export interface ContactSubmissionRow {
-  id: string
-  name: string
-  email: string
-  phone: string | null
-  message: string
-  is_read: boolean
-  created_at: string
-}
-
-export interface ContentBlockRow {
-  id: string
-  key: string
-  value: string
-  updated_at: string
-}
-
-export interface OpeningHoursRow {
-  id: string
-  day_of_week: 0 | 1 | 2 | 3 | 4 | 5 | 6
-  open_time: string | null
-  close_time: string | null
-  is_closed: boolean
-}
-
-export interface TestimonialRow {
-  id: string
-  author_name: string
-  content: string
-  rating: 1 | 2 | 3 | 4 | 5
-  is_published: boolean
-  sort_order: number
-  created_at: string
-}
-
-export interface GalleryRow {
-  id: string
-  url: string
-  alt_text: string | null
-  section: 'hero' | 'about' | 'gallery'
-  sort_order: number
-  is_active: boolean
-  created_at: string
-}
-
-export interface SocialLinkRow {
-  id: string
-  platform: string
-  url: string
-  is_active: boolean
-}
+export type ServiceRow = Database['public']['Tables']['services']['Row']
+export type PricingRow = Database['public']['Tables']['pricing']['Row']
+export type TimeslotRow = Database['public']['Tables']['timeslots']['Row']
+export type BookingRow = Database['public']['Tables']['bookings']['Row']
+export type ContactSubmissionRow = Database['public']['Tables']['contact_submissions']['Row']
+export type ContentBlockRow = Database['public']['Tables']['content_blocks']['Row']
+export type OpeningHoursRow = Database['public']['Tables']['opening_hours']['Row']
+export type TestimonialRow = Database['public']['Tables']['testimonials']['Row']
+export type GalleryRow = Database['public']['Tables']['gallery']['Row']
+export type SocialLinkRow = Database['public']['Tables']['social_links']['Row']
