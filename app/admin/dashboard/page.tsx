@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { createClient } from '@/lib/supabase/server'
 import { formatDate, formatTime } from '@/lib/utils'
 import { confirmBooking, cancelBooking } from '@/app/actions/admin'
@@ -13,7 +14,7 @@ import {
 interface StatCardProps {
   label: string
   value: number
-  icon: React.ReactNode
+  icon: ReactNode
   colorClass: string
 }
 
@@ -98,6 +99,28 @@ export default async function DashboardPage() {
   weekEnd.setDate(today.getDate() + 7)
   const weekEndStr = weekEnd.toISOString().split('T')[0]
 
+  // Pre-fetch timeslot ID lists with typed results
+  const { data: todayTimeslots } = await supabase
+    .from('timeslots')
+    .select('id')
+    .eq('date', todayStr)
+  const todayIds: string[] = (todayTimeslots ?? []).map((t: { id: string }) => t.id)
+
+  const { data: weekTimeslots } = await supabase
+    .from('timeslots')
+    .select('id')
+    .gte('date', todayStr)
+    .lte('date', weekEndStr)
+  const weekIds: string[] = (weekTimeslots ?? []).map((t: { id: string }) => t.id)
+
+  const { data: weekTimeslotsOrdered } = await supabase
+    .from('timeslots')
+    .select('id')
+    .gte('date', todayStr)
+    .lte('date', weekEndStr)
+    .order('date')
+  const weekIdsOrdered: string[] = (weekTimeslotsOrdered ?? []).map((t: { id: string }) => t.id)
+
   // Parallel data fetches
   const [
     { count: pendingCount },
@@ -116,30 +139,13 @@ export default async function DashboardPage() {
       .from('bookings')
       .select('id', { count: 'exact', head: true })
       .eq('status', 'confirmed')
-      .in(
-        'timeslot_id',
-        (
-          await supabase
-            .from('timeslots')
-            .select('id')
-            .eq('date', todayStr)
-        ).data?.map((t) => t.id) ?? []
-      ),
+      .in('timeslot_id', todayIds),
 
     supabase
       .from('bookings')
       .select('id', { count: 'exact', head: true })
       .eq('status', 'confirmed')
-      .in(
-        'timeslot_id',
-        (
-          await supabase
-            .from('timeslots')
-            .select('id')
-            .gte('date', todayStr)
-            .lte('date', weekEndStr)
-        ).data?.map((t) => t.id) ?? []
-      ),
+      .in('timeslot_id', weekIds),
 
     supabase
       .from('contact_submissions')
@@ -150,17 +156,7 @@ export default async function DashboardPage() {
       .from('bookings')
       .select('id, customer_name, status, services(name), timeslots(date, start_time)')
       .eq('status', 'confirmed')
-      .in(
-        'timeslot_id',
-        (
-          await supabase
-            .from('timeslots')
-            .select('id')
-            .gte('date', todayStr)
-            .lte('date', weekEndStr)
-            .order('date')
-        ).data?.map((t) => t.id) ?? []
-      )
+      .in('timeslot_id', weekIdsOrdered)
       .limit(10)
       .returns<BookingWithRelations[]>(),
 

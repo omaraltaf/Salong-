@@ -88,9 +88,10 @@ function GoogleBadge() {
 
       <div className="flex flex-col leading-none">
         <div className="flex items-center gap-0.5">
-          {[1, 2, 3, 4].map((i) => (
-            <StarIcon key={i} className="text-amber-400" />
-          ))}
+          <StarIcon className="text-amber-400" />
+          <StarIcon className="text-amber-400" />
+          <StarIcon className="text-amber-400" />
+          <StarIcon className="text-amber-400" />
           <StarIcon className="text-amber-400" />
         </div>
         <span className="mt-0.5 text-xs font-semibold text-[var(--color-foreground)]">

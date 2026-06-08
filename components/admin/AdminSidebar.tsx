@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {
@@ -26,7 +26,7 @@ import { cn } from '@/lib/utils'
 interface NavItem {
   label: string
   href: string
-  icon: React.ReactNode
+  icon: ReactNode
 }
 
 const navItems: NavItem[] = [
