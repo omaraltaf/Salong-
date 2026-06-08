@@ -259,30 +259,32 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
         {/* Right: image (desktop only)                                       */}
         {/* ---------------------------------------------------------------- */}
         <motion.div
-          className="hidden md:flex md:absolute md:inset-0 overflow-hidden"
+          className="relative hidden h-[80vh] w-full max-w-[520px] overflow-hidden md:flex md:w-[45%] md:rounded-2xl md:shadow-2xl"
           variants={imageVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Tall portrait image with parallax */}
+          {/* Image card with subtle parallax */}
           <motion.div
-            className="absolute inset-0 scale-110"
+            className="absolute inset-0"
             style={{ transform: imageTransform }}
           >
             <Image
               src={imageUrl}
               alt="Blue Point frisørsalong interiør"
               fill
-              className="object-cover object-right"
+              className="object-cover object-center"
               priority
             />
           </motion.div>
 
-          {/* Left-edge gradient so it blends with the dark content side */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-secondary)]/60 via-transparent to-transparent" />
+          {/* Subtle overlay for contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent rounded-2xl" />
 
-          {/* Floating Google badge */}
-          <GoogleBadge />
+          {/* Floating Google badge inside the card */}
+          <div className="absolute bottom-4 right-4">
+            <GoogleBadge />
+          </div>
         </motion.div>
       </div>
 
