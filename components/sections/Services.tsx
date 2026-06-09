@@ -160,7 +160,7 @@ function ServiceCard({ service }: { service: Service }) {
       variants={cardVariants}
       className={cn(
         'group relative flex flex-col gap-4 rounded-2xl p-6',
-        'bg-[var(--color-background)]',
+        'bg-[var(--color-secondary)]',
         'shadow-sm transition-all duration-300 ease-out',
         'hover:-translate-y-1 hover:shadow-md',
       )}

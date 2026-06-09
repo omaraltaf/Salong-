@@ -432,7 +432,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20"
+              className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30"
             >
               <h3 className="mb-6 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                 Send oss en melding
