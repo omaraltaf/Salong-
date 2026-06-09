@@ -268,8 +268,8 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
         type="submit"
         disabled={isSubmitting}
         className={cn(
-          'relative flex items-center justify-center gap-2 rounded-lg bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-black shadow-md shadow-black/20 transition-all',
-          'hover:opacity-90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2',
+          'relative flex items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 transition-all',
+          'hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2',
           isSubmitting && 'cursor-not-allowed opacity-70',
         )}
       >
