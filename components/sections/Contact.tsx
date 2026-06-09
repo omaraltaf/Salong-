@@ -193,7 +193,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
   }
 
   const inputBase =
-    'w-full rounded-lg border border-[var(--color-accent)] bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20'
+    'w-full rounded-lg bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20'
 
   const errorBase = 'mt-1.5 text-xs text-rose-500'
 
@@ -351,7 +351,7 @@ function OpeningHoursTable({ openingHours }: { openingHours: OpeningHour[] }) {
               <tr
                 key={dayNum}
                 className={cn(
-                  'border-b border-[var(--color-accent)]/30 last:border-0',
+                  'border-b border-[var(--color-accent)]/10 last:border-0',
                   isToday && 'rounded bg-[var(--color-muted)]',
                 )}
               >
@@ -432,7 +432,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20"
+              className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20"
             >
               <h3 className="mb-6 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                 Send oss en melding

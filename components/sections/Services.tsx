@@ -160,9 +160,9 @@ function ServiceCard({ service }: { service: Service }) {
       variants={cardVariants}
       className={cn(
         'group relative flex flex-col gap-4 rounded-2xl p-6',
-        'bg-[var(--color-background)] border border-[var(--color-accent)]/40',
+        'bg-[var(--color-background)]',
         'shadow-sm transition-all duration-300 ease-out',
-        'hover:-translate-y-1 hover:shadow-md hover:border-[var(--color-primary)]/30',
+        'hover:-translate-y-1 hover:shadow-md',
       )}
     >
       {/* Icon */}
@@ -192,7 +192,7 @@ function ServiceCard({ service }: { service: Service }) {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-2 border-t border-[var(--color-accent)]/40">
+      <div className="flex items-center justify-between pt-4 mt-2">
         <span className="inline-flex items-center gap-1 text-xs text-[var(--color-foreground)]/50">
           <svg
             className="h-3.5 w-3.5"
@@ -289,7 +289,7 @@ export default function Services({ services }: ServicesProps) {
                     'shrink-0 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200',
                     activeTab === key
                       ? 'text-black shadow-sm'
-                      : 'bg-[var(--color-background)] text-[var(--color-foreground)]/60 hover:text-[var(--color-foreground)] border border-[var(--color-accent)]',
+                      : 'bg-[var(--color-secondary)] text-[var(--color-foreground)]/60 hover:text-[var(--color-foreground)]',
                   )}
                   style={
                     activeTab === key

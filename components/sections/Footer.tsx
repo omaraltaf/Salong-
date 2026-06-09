@@ -205,7 +205,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-[var(--color-accent)]/10">
+      <div>
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-[var(--color-foreground)]/50 sm:flex-row sm:px-6 lg:px-8">
           <p>© 2024 {salonConfig.name}. Alle rettigheter forbeholdt.</p>
           <p>

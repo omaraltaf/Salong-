@@ -157,7 +157,6 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
               </motion.div>
 
               {/* Subtle vignette */}
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-accent)]/20" aria-hidden="true" />
             </div>
           </motion.div>
 

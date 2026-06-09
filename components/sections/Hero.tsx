@@ -54,48 +54,46 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
             <button
               type="button"
               onClick={() => scrollToSection('#tjenester')}
-              className="inline-flex items-center justify-center rounded-full border border-[var(--color-accent)]/50 bg-transparent px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/5"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)]/15 px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/25"
             >
               Se tjenester
             </button>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Rask og enkel booking</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Book online på sekunder, og kom til avtalt tid.</p>
             </div>
-            <div className="rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Erfarne frisører</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Vi gir deg personlig styling for alle hårtyper.</p>
             </div>
-            <div className="rounded-2xl border border-[var(--color-accent)]/30 bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Favoritt hos lokalene</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Anmeldt 4.8 av fornøyde kunder på Google.</p>
             </div>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-accent)]/40 bg-[var(--color-secondary)] shadow-2xl shadow-black/50">
-            <div className="relative h-[28rem] w-full sm:h-[34rem] lg:h-[42rem]">
-              <Image
-                src={imageUrl}
-                alt="Interiør fra Blue Point frisørsalong"
-                fill
-                className="object-cover object-center"
-                priority
-              />
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-black/80 via-black/20 to-transparent" aria-hidden="true" />
-            </div>
-          </div>
+        <div className="relative overflow-hidden rounded-[2rem] bg-[var(--color-secondary)] shadow-2xl shadow-black/50">
+          <div className="relative h-[28rem] w-full sm:h-[34rem] lg:h-[42rem]">
+            <Image
+              src={imageUrl}
+              alt="Interiør fra Blue Point frisørsalong"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" aria-hidden="true" />
 
-          <div className="absolute bottom-0 left-6 right-6 translate-y-1/2 z-10 max-w-md">
-            <div className="rounded-2xl border border-[var(--color-accent)]/40 bg-[var(--color-secondary)]/95 p-5 text-sm shadow-lg shadow-black/40">
-              <p className="font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)]">4.8 på Google</p>
-              <p className="mt-3 text-sm leading-6 text-[var(--color-foreground)]/80">
-                Kundene våre elsker kvalitet, god service og en avslappet salongopplevelse.
-              </p>
+            <div className="absolute bottom-0 inset-x-0 px-6 py-8">
+              <div className="max-w-md rounded-2xl bg-black/40 backdrop-blur-sm p-6 text-sm">
+                <p className="font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)]">4.8 på Google</p>
+                <p className="mt-3 text-sm leading-6 text-[var(--color-foreground)]/90">
+                  Kundene våre elsker kvalitet, god service og en avslappet salongopplevelse.
+                </p>
+              </div>
             </div>
           </div>
         </div>

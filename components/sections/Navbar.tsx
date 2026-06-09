@@ -88,7 +88,7 @@ function HamburgerButton({ isOpen, onClick }: HamburgerButtonProps) {
       onClick={onClick}
       aria-label={isOpen ? 'Lukk meny' : 'Åpne meny'}
       aria-expanded={isOpen}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-secondary)] text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/10"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-secondary)] text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/10"
     >
       <span className="absolute h-px w-5 bg-current" />
       <span className="absolute h-px w-5 bg-current rotate-45" />
@@ -102,7 +102,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-[var(--color-accent)]/10 bg-[var(--color-background)]/95 backdrop-blur-xl text-[var(--color-foreground)]">
+      <header className="fixed inset-x-0 top-0 z-50 bg-[var(--color-background)]/95 backdrop-blur-xl text-[var(--color-foreground)]">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 md:px-8">
           <button
             type="button"

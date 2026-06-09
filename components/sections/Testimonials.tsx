@@ -66,7 +66,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       className={cn(
         'relative flex flex-col gap-5 rounded-2xl p-6 md:p-7',
         'min-w-[320px] max-w-[380px]',
-        'shadow-sm border border-[var(--color-accent)]/30',
+        'shadow-sm',
         'bg-[var(--color-secondary)]',
       )}
     >
@@ -85,7 +85,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </blockquote>
 
       {/* Author */}
-      <footer className="flex items-center gap-3 pt-1 border-t border-[var(--color-primary)]/15">
+      <footer className="flex items-center gap-3 pt-3 mt-2">
         <div
           className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-black"
           style={{ backgroundColor: 'var(--color-primary)' }}
