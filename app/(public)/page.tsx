@@ -90,7 +90,7 @@ export default async function HomePage() {
                 <a href="#booking" className="inline-flex rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-95">
                   Book time
                 </a>
-                <a href="#contact" className="inline-flex rounded-full bg-[var(--color-accent)]/25 px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/35">
+                <a href="#contact" className="inline-flex rounded-full bg-[var(--color-secondary)] px-6 py-3 text-sm font-semibold text-[var(--color-accent)] transition hover:bg-[var(--color-secondary)]/80">
                   Kontakt oss
                 </a>
               </div>

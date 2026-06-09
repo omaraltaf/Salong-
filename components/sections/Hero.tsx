@@ -54,7 +54,7 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
             <button
               type="button"
               onClick={() => scrollToSection('#tjenester')}
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)]/25 px-6 py-3 text-sm font-semibold text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/35"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--color-secondary)] px-6 py-3 text-sm font-semibold text-[var(--color-accent)] transition hover:bg-[var(--color-secondary)]/80"
             >
               Se tjenester
             </button>
