@@ -177,8 +177,7 @@ function HamburgerButton({ isOpen, onClick, scrolled }: HamburgerButtonProps) {
       aria-label={isOpen ? 'Lukk meny' : 'Åpne meny'}
       aria-expanded={isOpen}
       className={cn(
-        'relative z-50 flex size-10 flex-col items-center justify-center gap-[5px] rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]',
-        isOpen ? 'text-white' : scrolled ? 'text-[var(--color-foreground)]' : 'text-white',
+        'relative z-50 flex size-10 flex-col items-center justify-center gap-[5px] rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] text-white',
       )}
     >
       <motion.span
@@ -218,21 +217,13 @@ export default function Navbar() {
     <>
       <header
         ref={navRef}
-        className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          scrolled
-            ? 'bg-white/90 shadow-sm backdrop-blur-md'
-            : 'bg-transparent',
-        )}
+        className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl transition-all duration-300"
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className={cn(
-              'flex items-center gap-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]',
-              scrolled ? 'text-[var(--color-foreground)]' : 'text-white',
-            )}
+            className="flex items-center gap-2.5 text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
             aria-label="Gå til toppen"
           >
             <ScissorsIcon
@@ -254,9 +245,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection(link.href)}
                 className={cn(
                   'text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]',
-                  scrolled
-                    ? 'text-[var(--color-foreground)]/80 hover:text-[var(--color-primary)]'
-                    : 'text-white/90 hover:text-white',
+                  'text-white/90 hover:text-[var(--color-primary)]',
                 )}
               >
                 {link.label}

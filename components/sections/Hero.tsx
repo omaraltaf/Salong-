@@ -319,10 +319,36 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           </motion.div>
 
           {/* Subtle overlay for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+          {/* Floating hero detail card */}
+          <div className="absolute right-10 top-1/2 z-20 hidden w-[320px] -translate-y-1/2 rounded-[2rem] border border-white/10 bg-white/10 p-6 text-white shadow-2xl backdrop-blur-xl md:block">
+            <div className="mb-4 text-xs uppercase tracking-[0.35em] text-[var(--color-primary)]">
+              Velkommen til Blue Point
+            </div>
+            <div className="mb-4 text-lg font-semibold leading-tight">
+              Eksklusiv hårpleie for ditt neste look
+            </div>
+            <div className="grid gap-3 text-sm text-white/75">
+              <div className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary)]">✂️</span>
+                <div>
+                  <div className="font-semibold text-white">Skreddersydd klipp</div>
+                  <div>Personlig styling for hverdag og fest.</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary)]">💆‍♀️</span>
+                <div>
+                  <div className="font-semibold text-white">Eksklusive produkter</div>
+                  <div>Premium behandling med førsteklasses merker.</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Floating Google badge inside the hero (desktop) */}
-          <div className="absolute bottom-6 right-6">
+          <div className="absolute bottom-6 right-6 z-20">
             <GoogleBadge />
           </div>
         </motion.div>
