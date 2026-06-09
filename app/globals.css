@@ -4,15 +4,15 @@
 
 :root {
   --color-primary: #C4A882;
-  --color-secondary: #2C2C2C;
+  --color-secondary: #0F172A;
   --color-accent: #E8D5C4;
-  --color-background: #FAFAF8;
-  --color-foreground: #1A1A1A;
-  --color-muted: #F5F0EB;
-  --radius: 0.5rem;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --ring: 224 71.4% 4.1%;
+  --color-background: #070A12;
+  --color-foreground: #F8F6F1;
+  --color-muted: #111827;
+  --radius: 0.75rem;
+  --border: 216 18% 22%;
+  --input: 216 18% 16%;
+  --ring: 42 100% 78%;
 }
 
 * {

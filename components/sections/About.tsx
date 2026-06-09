@@ -98,8 +98,8 @@ function StatPillList() {
           variants={pillVariants}
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full px-4 py-2',
-            'bg-[var(--color-accent)] text-sm font-medium text-[var(--color-foreground)]',
-            'ring-1 ring-[var(--color-primary)]/20',
+            'bg-[var(--color-primary)]/10 text-sm font-medium text-[var(--color-primary)]',
+            'border border-[var(--color-primary)]/20',
           )}
         >
           {pill.label}
@@ -157,7 +157,7 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
               </motion.div>
 
               {/* Subtle vignette */}
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/10" aria-hidden="true" />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--color-accent)]/20" aria-hidden="true" />
             </div>
           </motion.div>
 

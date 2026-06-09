@@ -261,10 +261,7 @@ export default function Services({ services }: ServicesProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]">
             Våre tjenester
           </h2>
           <div
@@ -291,7 +288,7 @@ export default function Services({ services }: ServicesProps) {
                   className={cn(
                     'shrink-0 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200',
                     activeTab === key
-                      ? 'text-white shadow-sm'
+                      ? 'text-black shadow-sm'
                       : 'bg-[var(--color-background)] text-[var(--color-foreground)]/60 hover:text-[var(--color-foreground)] border border-[var(--color-accent)]',
                   )}
                   style={
@@ -316,7 +313,7 @@ export default function Services({ services }: ServicesProps) {
               variants={containerVariants}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="flex gap-4"
+              className="flex gap-5"
               style={{ width: 'max-content' }}
             >
               {sorted.map((service) => (

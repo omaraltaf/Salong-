@@ -193,12 +193,12 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
   }
 
   const inputBase =
-    'w-full rounded-lg border border-[var(--color-accent)] bg-white px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20'
+    'w-full rounded-lg border border-[var(--color-accent)] bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20'
 
   const errorBase = 'mt-1.5 text-xs text-rose-500'
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6">
       {/* Navn */}
       <div>
         <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
@@ -268,8 +268,8 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
         type="submit"
         disabled={isSubmitting}
         className={cn(
-          'relative flex items-center justify-center gap-2 rounded-lg bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all',
-          'hover:opacity-90 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2',
+          'relative flex items-center justify-center gap-2 rounded-lg bg-[var(--color-primary)] px-6 py-3.5 text-sm font-semibold text-black shadow-md shadow-black/20 transition-all',
+          'hover:opacity-90 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2',
           isSubmitting && 'cursor-not-allowed opacity-70',
         )}
       >
@@ -351,7 +351,7 @@ function OpeningHoursTable({ openingHours }: { openingHours: OpeningHour[] }) {
               <tr
                 key={dayNum}
                 className={cn(
-                  'border-b border-[var(--color-accent)]/60 last:border-0',
+                  'border-b border-[var(--color-accent)]/30 last:border-0',
                   isToday && 'rounded bg-[var(--color-muted)]',
                 )}
               >
@@ -413,7 +413,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
           >
             <h2
               id="contact-heading"
-              className="font-heading text-4xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-5xl"
+              className="font-heading text-3xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-4xl lg:text-5xl"
             >
               {heading}
             </h2>
@@ -432,7 +432,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="rounded-2xl border border-[var(--color-accent)] bg-white p-8 shadow-sm"
+              className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20"
             >
               <h3 className="mb-6 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                 Send oss en melding
@@ -464,7 +464,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               className="flex flex-col gap-10"
             >
               {/* Contact details */}
-              <div className="rounded-2xl border border-[var(--color-accent)] bg-white p-8 shadow-sm">
+              <div className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20">
                 <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                   Finn oss
                 </h3>
@@ -512,7 +512,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               </div>
 
               {/* Opening hours */}
-              <div className="rounded-2xl border border-[var(--color-accent)] bg-white p-8 shadow-sm">
+              <div className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20">
                 <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                   Åpningstider
                 </h3>

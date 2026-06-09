@@ -67,8 +67,8 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         'relative flex flex-col gap-5 rounded-2xl p-6 md:p-7',
         'min-w-[320px] max-w-[380px]',
         'shadow-sm border border-[var(--color-accent)]/30',
+        'bg-[var(--color-secondary)]',
       )}
-      style={{ backgroundColor: 'var(--color-accent)' }}
     >
       {/* Decorative quote mark */}
       <QuoteIcon
@@ -87,7 +87,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       {/* Author */}
       <footer className="flex items-center gap-3 pt-1 border-t border-[var(--color-primary)]/15">
         <div
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-white"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-black"
           style={{ backgroundColor: 'var(--color-primary)' }}
           aria-hidden="true"
         >
@@ -157,10 +157,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]">
             Hva kundene sier
           </h2>
           <div
@@ -195,7 +192,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
             >
               {/* Scrolling track — pause on hover */}
               <div
-                className="flex gap-5 animate-[scroll-left_40s_linear_infinite] hover:[animation-play-state:paused] w-max"
+                className="flex gap-6 animate-[scroll-left_40s_linear_infinite] hover:[animation-play-state:paused] w-max"
               >
                 {doubled.map((testimonial, index) => (
                   <TestimonialCard

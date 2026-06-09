@@ -112,7 +112,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
 
   return (
     <footer
-      className="bg-[var(--color-secondary)] text-white"
+      className="bg-[var(--color-secondary)] text-[var(--color-foreground)]"
       aria-label="Bunntekst"
     >
       {/* Warm top accent line */}
@@ -128,11 +128,11 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
               <span className="text-[var(--color-primary)]">
                 <ScissorsIcon className="size-6" />
               </span>
-              <span className="font-heading text-lg font-semibold tracking-wide text-white">
+              <span className="font-heading text-lg font-semibold tracking-wide text-[var(--color-foreground)]">
                 {salonConfig.name}
               </span>
             </div>
-            <p className="max-w-xs text-sm leading-relaxed text-white/55">
+            <p className="max-w-xs text-sm leading-relaxed text-[var(--color-foreground)]/60">
               {tagline}
             </p>
 
@@ -146,7 +146,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.platform}
-                    className="flex size-9 items-center justify-center rounded-lg bg-white/10 text-white/60 transition-colors hover:bg-[var(--color-primary)] hover:text-white"
+                    className="flex size-9 items-center justify-center rounded-lg bg-[var(--color-muted)] text-[var(--color-foreground)]/60 transition-colors hover:bg-[var(--color-primary)] hover:text-black"
                   >
                     <SocialIcon platform={link.platform} />
                   </a>
@@ -157,7 +157,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
 
           {/* ── Column 2: Navigation ── */}
           <nav aria-label="Bunntekstnavigasjon">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-white/40">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-[var(--color-foreground)]/50">
               Navigasjon
             </p>
             <ul className="flex flex-col gap-3">
@@ -165,7 +165,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/65 transition-colors hover:text-[var(--color-primary)]"
+                    className="text-sm text-[var(--color-foreground)]/70 transition-colors hover:text-[var(--color-primary)]"
                   >
                     {link.label}
                   </a>
@@ -176,10 +176,10 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
 
           {/* ── Column 3: Contact info ── */}
           <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-white/40">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-[var(--color-foreground)]/50">
               Kontakt
             </p>
-            <ul className="flex flex-col gap-3 text-sm text-white/65">
+            <ul className="flex flex-col gap-3 text-sm text-[var(--color-foreground)]/70">
               <li>
                 <span className="block leading-snug">{salonConfig.address}</span>
               </li>
@@ -205,8 +205,8 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/35 sm:flex-row sm:px-6 lg:px-8">
+      <div className="border-t border-[var(--color-accent)]/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-[var(--color-foreground)]/50 sm:flex-row sm:px-6 lg:px-8">
           <p>© 2024 {salonConfig.name}. Alle rettigheter forbeholdt.</p>
           <p>
             Nettside av{' '}
@@ -214,7 +214,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
               href="https://kvikai.no"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-white/50 underline-offset-4 transition-colors hover:text-[var(--color-primary)] hover:underline"
+              className="font-medium text-[var(--color-foreground)]/70 underline-offset-4 transition-colors hover:text-[var(--color-primary)] hover:underline"
             >
               Kvikai
             </a>
