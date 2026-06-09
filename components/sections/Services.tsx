@@ -161,7 +161,7 @@ function ServiceCard({ service }: { service: Service }) {
       className={cn(
         'group relative flex flex-col gap-4 rounded-2xl p-6',
         'bg-[var(--color-secondary)]',
-        'shadow-sm transition-all duration-300 ease-out',
+        'shadow-lg shadow-black/30 transition-all duration-300 ease-out',
         'hover:-translate-y-1 hover:shadow-md',
       )}
     >
@@ -185,7 +185,7 @@ function ServiceCard({ service }: { service: Service }) {
           {service.name}
         </h3>
         {service.description && (
-          <p className="text-sm leading-relaxed text-[var(--color-foreground)]/60 line-clamp-3">
+          <p className="text-sm leading-relaxed text-[var(--color-foreground)]/70 line-clamp-3">
             {service.description}
           </p>
         )}
@@ -289,7 +289,7 @@ export default function Services({ services }: ServicesProps) {
                     'shrink-0 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200',
                     activeTab === key
                       ? 'text-black shadow-sm'
-                      : 'bg-[var(--color-secondary)] text-[var(--color-foreground)]/60 hover:text-[var(--color-foreground)]',
+                      : 'bg-[var(--color-secondary)] text-[var(--color-foreground)]/70 hover:text-[var(--color-foreground)]',
                   )}
                   style={
                     activeTab === key
