@@ -76,19 +76,22 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-accent)]/40 bg-[var(--color-secondary)] shadow-2xl shadow-black/50">
-          <div className="relative h-[28rem] w-full sm:h-[34rem] lg:h-[42rem]">
-            <Image
-              src={imageUrl}
-              alt="Interiør fra Blue Point frisørsalong"
-              fill
-              className="object-cover object-center"
-              priority
-            />
+        <div className="relative">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-accent)]/40 bg-[var(--color-secondary)] shadow-2xl shadow-black/50">
+            <div className="relative h-[28rem] w-full sm:h-[34rem] lg:h-[42rem]">
+              <Image
+                src={imageUrl}
+                alt="Interiør fra Blue Point frisørsalong"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-t from-black/80 via-black/20 to-transparent" aria-hidden="true" />
+            </div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 rounded-b-[2rem] bg-gradient-to-t from-black/80 via-black/20 to-transparent px-6 py-5">
-            <div className="max-w-md rounded-2xl border border-[var(--color-accent)]/40 bg-[var(--color-secondary)]/95 p-5 text-sm shadow-lg shadow-black/40">
+          <div className="absolute bottom-0 left-6 right-6 translate-y-1/2 z-10 max-w-md">
+            <div className="rounded-2xl border border-[var(--color-accent)]/40 bg-[var(--color-secondary)]/95 p-5 text-sm shadow-lg shadow-black/40">
               <p className="font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)]">4.8 på Google</p>
               <p className="mt-3 text-sm leading-6 text-[var(--color-foreground)]/80">
                 Kundene våre elsker kvalitet, god service og en avslappet salongopplevelse.
