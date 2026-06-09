@@ -80,7 +80,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       <StarRating rating={testimonial.rating} />
 
       {/* Content */}
-      <blockquote className="text-sm leading-relaxed text-[var(--color-foreground)]/75 flex-1">
+      <blockquote className="text-sm leading-relaxed text-[var(--color-foreground)]/70 flex-1">
         {testimonial.content}
       </blockquote>
 

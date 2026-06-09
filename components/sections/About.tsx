@@ -99,7 +99,6 @@ function StatPillList() {
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full px-4 py-2',
             'bg-[var(--color-primary)]/10 text-sm font-medium text-[var(--color-primary)]',
-            'border border-[var(--color-primary)]/20',
           )}
         >
           {pill.label}
@@ -198,11 +197,11 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
             <motion.div
               variants={fadeUp}
               className={cn(
-                'prose prose-neutral mt-6 max-w-none text-[var(--color-foreground)]/75',
+                'prose prose-neutral mt-6 max-w-none text-[var(--color-foreground)]/70',
                 // Prose overrides to match the design system
                 '[&_p]:leading-relaxed [&_p]:text-base',
                 '[&_strong]:font-semibold [&_strong]:text-[var(--color-foreground)]',
-                '[&_ul]:space-y-1 [&_li]:text-[var(--color-foreground)]/75',
+                '[&_ul]:space-y-1 [&_li]:text-[var(--color-foreground)]/70',
                 '[&_h2]:font-heading [&_h2]:text-[var(--color-foreground)]',
                 '[&_h3]:font-heading [&_h3]:text-[var(--color-foreground)]',
               )}
