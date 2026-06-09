@@ -146,7 +146,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
     <section
       id="omtaler"
       className="relative py-20 md:py-28 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: 'var(--color-muted)' }}
+      style={{ backgroundColor: 'var(--color-background)' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Heading */}

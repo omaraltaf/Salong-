@@ -250,7 +250,7 @@ export default function Services({ services }: ServicesProps) {
     <section
       id="tjenester"
       className="relative py-20 md:py-28 lg:py-32"
-      style={{ backgroundColor: 'var(--color-muted)' }}
+      style={{ backgroundColor: 'var(--color-background)' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Heading */}
