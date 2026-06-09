@@ -83,7 +83,7 @@ export default async function HomePage() {
                 <span>Søndag: Stengt</span>
               </div>
             </div>
-            <div className="rounded-2xl bg-[var(--color-muted)] p-6">
+            <div className="rounded-2xl bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30">
               <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Bestill raskt</p>
               <p className="mt-4 text-xl font-semibold text-[var(--color-foreground)]">Book time direkte i dag — eller ring oss for raskeste respons.</p>
               <div className="mt-6 flex flex-wrap gap-3">

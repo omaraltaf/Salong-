@@ -112,7 +112,7 @@ export default function Footer({ tagline, socialLinks }: FooterProps) {
 
   return (
     <footer
-      className="bg-[var(--color-secondary)] text-[var(--color-foreground)]"
+      className="bg-[var(--color-background)] text-[var(--color-foreground)]"
       aria-label="Bunntekst"
     >
       {/* Warm top accent line */}
