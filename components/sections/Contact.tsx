@@ -464,7 +464,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               className="flex flex-col gap-10"
             >
               {/* Contact details */}
-              <div className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20">
+              <div className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30">
                 <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                   Finn oss
                 </h3>
@@ -512,7 +512,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               </div>
 
               {/* Opening hours */}
-              <div className="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-secondary)] p-8 shadow-sm shadow-black/20">
+              <div className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30">
                 <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
                   Åpningstider
                 </h3>
