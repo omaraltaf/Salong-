@@ -299,7 +299,7 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
         {/* Right: image (desktop only)                                       */}
         {/* ---------------------------------------------------------------- */}
         <motion.div
-          className="relative hidden md:block md:absolute md:inset-y-0 md:right-12 md:w-[45%] overflow-hidden md:rounded-2xl md:shadow-2xl"
+          className="hidden md:block md:absolute md:inset-0 md:z-0 overflow-hidden"
           variants={imageVariants}
           initial="hidden"
           animate="visible"
@@ -319,10 +319,10 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           </motion.div>
 
           {/* Subtle overlay for contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent rounded-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-          {/* Floating Google badge inside the card */}
-          <div className="absolute bottom-4 right-4">
+          {/* Floating Google badge inside the hero (desktop) */}
+          <div className="absolute bottom-6 right-6">
             <GoogleBadge />
           </div>
         </motion.div>
