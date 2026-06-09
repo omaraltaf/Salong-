@@ -193,7 +193,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
   }
 
   const inputBase =
-    'w-full rounded-lg bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/20'
+    'w-full rounded-lg bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 ring-1 ring-[var(--color-accent)]/20'
 
   const errorBase = 'mt-1.5 text-xs text-rose-500'
 

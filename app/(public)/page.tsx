@@ -64,25 +64,25 @@ export default async function HomePage() {
               Blue Point leverer personlig rådgivning, premium hårpleie og en profesjonell behandling hver gang. Vi gjør det enkelt å booke, få riktig klipp og føle seg hjemme i stolen.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl  bg-[var(--color-secondary)] p-6 shadow-md shadow-black/20">
-                <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Høydepunkter</p>
-                <p className="mt-4 text-lg font-semibold text-[var(--color-foreground)]">Ekspertteam med kunnskap om alle hårtyper</p>
+              <div className="rounded-2xl  bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30 flex flex-col">
+                <p className="text-lg font-semibold text-[var(--color-foreground)] flex-1">Ekspertteam med kunnskap om alle hårtyper</p>
+                <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60 mt-4">Høydepunkter</p>
               </div>
-              <div className="rounded-2xl  bg-[var(--color-secondary)] p-6 shadow-md shadow-black/20">
-                <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Service</p>
-                <p className="mt-4 text-lg font-semibold text-[var(--color-foreground)]">Rask time, trygg behandling, resultater du kan føle</p>
+              <div className="rounded-2xl  bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30 flex flex-col">
+                <p className="text-lg font-semibold text-[var(--color-foreground)] flex-1">Rask time, trygg behandling, resultater du kan føle</p>
+                <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60 mt-4">Service</p>
               </div>
             </div>
           </div>
-          <div className="grid gap-4 rounded-[2rem]  bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30 sm:p-8">
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Åpningstider</p>
+          <div className="grid gap-4 rounded-[2rem] bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30 sm:p-8 flex flex-col">
+            <div className="flex-1">
               <div className="mt-3 grid gap-2 text-sm text-[var(--color-foreground)]/80">
                 <span>Mandag - Fredag: 09:00 - 18:00</span>
                 <span>Lørdag: 09:00 - 15:00</span>
                 <span>Søndag: Stengt</span>
               </div>
             </div>
+            <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60 mt-4">Åpningstider</p>
             <div className="rounded-2xl bg-[var(--color-secondary)] p-6 shadow-lg shadow-black/30">
               <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Bestill raskt</p>
               <p className="mt-4 text-xl font-semibold text-[var(--color-foreground)]">Book time direkte i dag — eller ring oss for raskeste respons.</p>
