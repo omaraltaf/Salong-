@@ -61,15 +61,15 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)] p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Rask og enkel booking</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Book online på sekunder, og kom til avtalt tid.</p>
             </div>
-            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)] p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Erfarne frisører</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Vi gir deg personlig styling for alle hårtyper.</p>
             </div>
-            <div className="rounded-2xl bg-[var(--color-secondary)]/80 p-5 text-sm shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-[var(--color-secondary)] p-5 text-sm shadow-lg shadow-black/30">
               <p className="font-semibold text-[var(--color-foreground)]">Favoritt hos lokalene</p>
               <p className="mt-2 text-sm text-[var(--color-foreground)]/70">Anmeldt 4.8 av fornøyde kunder på Google.</p>
             </div>
