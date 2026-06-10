@@ -97,18 +97,15 @@ function PriceRow({
       {/* Main service row */}
       <div className="flex items-baseline justify-between gap-4 py-3.5">
         <div className="flex flex-col gap-0.5 min-w-0">
-          <span className="text-sm font-medium text-[var(--color-foreground)] leading-snug">
+          <span className="text-sm font-medium text-foreground leading-snug">
             {label}
           </span>
-          <span className="text-xs text-[var(--color-foreground)]/45">
+          <span className="text-xs text-foreground/45">
             {duration} min
           </span>
         </div>
         {priceDisplay && !hasTiers && (
-          <span
-            className="shrink-0 text-sm font-semibold tabular-nums"
-            style={{ color: 'var(--color-primary)' }}
-          >
+          <span className="shrink-0 text-sm font-semibold tabular-nums text-primary">
             {priceDisplay}
           </span>
         )}
@@ -122,13 +119,10 @@ function PriceRow({
               key={tier.id}
               className="flex items-center justify-between gap-4 py-2"
             >
-              <span className="text-xs text-[var(--color-foreground)]/60">
+              <span className="text-xs text-foreground/60">
                 {tier.label}
               </span>
-              <span
-                className="shrink-0 text-xs font-medium tabular-nums"
-                style={{ color: 'var(--color-primary)' }}
-              >
+              <span className="shrink-0 text-xs font-medium tabular-nums text-primary">
                 {formatCurrency(tier.price)}
               </span>
             </div>
@@ -160,12 +154,11 @@ function CategorySection({
       {/* Category heading */}
       <div className="mb-1 flex items-center gap-4">
         <h3
-          className="text-xl font-semibold tracking-wide text-[var(--color-foreground)]"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
+          className="text-xl font-semibold tracking-wide text-foreground"
+                  >
           {getCategoryLabel(category)}
         </h3>
-        <div className="flex-1 h-px" style={{ backgroundColor: 'var(--color-accent)' }} />
+        <div className="flex-1 h-px bg-accent" />
       </div>
 
       {/* Service rows */}
@@ -211,8 +204,7 @@ export default function Pricing({ services }: PricingProps) {
   return (
     <section
       id="priser"
-      className="relative py-20 md:py-28 lg:py-32"
-      style={{ backgroundColor: 'var(--color-background)' }}
+      className="relative py-20 md:py-28 lg:py-32 bg-background"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
         {/* Heading */}
@@ -224,16 +216,12 @@ export default function Pricing({ services }: PricingProps) {
           className="mb-14 md:mb-18"
         >
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+                      >
             Priser
           </h2>
-          <div
-            className="mt-4 h-px w-16"
-            style={{ backgroundColor: 'var(--color-primary)' }}
-          />
-          <p className="mt-4 text-sm text-[var(--color-foreground)]/50">
+          <div className="mt-4 h-px w-16 bg-primary" />
+          <p className="mt-4 text-sm text-foreground/50">
             Alle priser er inklusiv mva.
           </p>
         </motion.div>
@@ -248,7 +236,7 @@ export default function Pricing({ services }: PricingProps) {
             />
           ))
         ) : (
-          <p className="text-center text-[var(--color-foreground)]/50 py-12">
+          <p className="text-center text-foreground/50 py-12">
             Ingen priser tilgjengelig ennå.
           </p>
         )}

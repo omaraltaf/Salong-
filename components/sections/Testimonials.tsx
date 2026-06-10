@@ -67,33 +67,31 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         'relative flex flex-col gap-5 rounded-2xl p-6 md:p-7',
         'min-w-[320px] max-w-[380px]',
         'shadow-sm',
-        'bg-[var(--color-secondary)]',
+        'bg-secondary',
       )}
     >
       {/* Decorative quote mark */}
       <QuoteIcon
-        className="absolute top-5 right-6 h-8 w-8 opacity-10"
-        style={{ color: 'var(--color-primary)' }}
+        className="absolute top-5 right-6 h-8 w-8 opacity-10 text-primary"
       />
 
       {/* Rating */}
       <StarRating rating={testimonial.rating} />
 
       {/* Content */}
-      <blockquote className="text-sm leading-relaxed text-[var(--color-foreground)]/70 flex-1">
+      <blockquote className="text-sm leading-relaxed text-foreground/70 flex-1">
         {testimonial.content}
       </blockquote>
 
       {/* Author */}
       <footer className="flex items-center gap-3 pt-3 mt-2">
         <div
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-black"
-          style={{ backgroundColor: 'var(--color-primary)' }}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-black bg-primary"
           aria-hidden="true"
         >
           {testimonial.author_name.charAt(0).toUpperCase()}
         </div>
-        <span className="text-sm font-medium text-[var(--color-foreground)]">
+        <span className="text-sm font-medium text-foreground">
           {testimonial.author_name}
         </span>
       </footer>
@@ -104,12 +102,9 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 function EmptyState() {
   return (
     <div className="flex flex-col items-center gap-4 py-16 text-center">
-      <div
-        className="flex h-16 w-16 items-center justify-center rounded-full"
-        style={{ backgroundColor: 'var(--color-accent)' }}
-      >
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent">
         <svg
-          className="h-8 w-8"
+          className="h-8 w-8 text-primary"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -117,18 +112,14 @@ function EmptyState() {
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          style={{ color: 'var(--color-primary)' }}
         >
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
       </div>
-      <p
-        className="text-base font-medium"
-        style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-foreground)' }}
-      >
+      <p className="text-base font-medium font-heading text-foreground">
         Bli den første til å gi oss en omtale
       </p>
-      <p className="text-sm text-[var(--color-foreground)]/50 max-w-xs">
+      <p className="text-sm text-foreground/50 max-w-xs">
         Vi setter stor pris på tilbakemeldinger fra våre kunder.
       </p>
     </div>
@@ -145,8 +136,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <section
       id="omtaler"
-      className="relative py-20 md:py-28 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: 'var(--color-background)' }}
+      className="relative py-20 md:py-28 lg:py-32 overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Heading */}
@@ -157,13 +147,10 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
             Hva kundene sier
           </h2>
-          <div
-            className="mx-auto mt-4 h-px w-16"
-            style={{ backgroundColor: 'var(--color-primary)' }}
-          />
+          <div className="mx-auto mt-4 h-px w-16 bg-primary" />
         </motion.div>
       </div>
 

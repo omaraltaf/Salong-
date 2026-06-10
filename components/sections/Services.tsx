@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { cn, formatCurrency } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
 type Service = {
   id: string
@@ -160,7 +161,7 @@ function ServiceCard({ service }: { service: Service }) {
       variants={cardVariants}
       className={cn(
         'group relative flex flex-col gap-4 rounded-2xl p-6',
-        'bg-[var(--color-secondary)]',
+        'bg-secondary',
         'shadow-lg shadow-black/30 transition-all duration-300 ease-out',
         'hover:-translate-y-1 hover:shadow-md',
       )}
@@ -169,8 +170,8 @@ function ServiceCard({ service }: { service: Service }) {
       <div
         className={cn(
           'flex h-11 w-11 items-center justify-center rounded-xl',
-          'bg-[var(--color-accent)]/50 text-[var(--color-primary)]',
-          'transition-colors duration-300 group-hover:bg-[var(--color-primary)]/10',
+          'bg-accent/50 text-primary',
+          'transition-colors duration-300 group-hover:bg-primary/10',
         )}
       >
         <CategoryIcon category={service.category} className="h-5 w-5" />
@@ -179,13 +180,12 @@ function ServiceCard({ service }: { service: Service }) {
       {/* Content */}
       <div className="flex flex-col gap-2 flex-1">
         <h3
-          className="font-heading text-base font-semibold leading-snug text-[var(--color-foreground)]"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
+          className="font-heading text-base font-semibold leading-snug text-foreground"
+                  >
           {service.name}
         </h3>
         {service.description && (
-          <p className="text-sm leading-relaxed text-[var(--color-foreground)]/70 line-clamp-3">
+          <p className="text-sm leading-relaxed text-foreground/70 line-clamp-3">
             {service.description}
           </p>
         )}
@@ -193,7 +193,7 @@ function ServiceCard({ service }: { service: Service }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-4 mt-2">
-        <span className="inline-flex items-center gap-1 text-xs text-[var(--color-foreground)]/50">
+        <span className="inline-flex items-center gap-1 text-xs text-foreground/50">
           <svg
             className="h-3.5 w-3.5"
             viewBox="0 0 24 24"
@@ -210,10 +210,7 @@ function ServiceCard({ service }: { service: Service }) {
           {service.duration_minutes} min
         </span>
         {priceLabel && (
-          <span
-            className="text-sm font-semibold"
-            style={{ color: 'var(--color-primary)' }}
-          >
+          <span className="text-sm font-semibold text-primary">
             {priceLabel}
           </span>
         )}
@@ -249,8 +246,7 @@ export default function Services({ services }: ServicesProps) {
   return (
     <section
       id="tjenester"
-      className="relative py-20 md:py-28 lg:py-32"
-      style={{ backgroundColor: 'var(--color-background)' }}
+      className="relative py-20 md:py-28 lg:py-32 bg-background"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Heading */}
@@ -261,13 +257,10 @@ export default function Services({ services }: ServicesProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-foreground)]">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
             Våre tjenester
           </h2>
-          <div
-            className="mx-auto mt-4 h-px w-16"
-            style={{ backgroundColor: 'var(--color-primary)' }}
-          />
+          <div className="mx-auto mt-4 h-px w-16 bg-primary" />
         </motion.div>
 
         {/* Category tabs */}
@@ -282,23 +275,15 @@ export default function Services({ services }: ServicesProps) {
             {/* Mobile: horizontal scroll */}
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none md:justify-center">
               {tabKeys.map((key) => (
-                <button
+                <Button
                   key={key}
+                  variant={activeTab === key ? 'primary' : 'secondary'}
                   onClick={() => setActiveTab(key)}
-                  className={cn(
-                    'shrink-0 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200',
-                    activeTab === key
-                      ? 'text-black shadow-sm'
-                      : 'bg-[var(--color-secondary)] text-[var(--color-foreground)]/70 hover:text-[var(--color-foreground)]',
-                  )}
-                  style={
-                    activeTab === key
-                      ? { backgroundColor: 'var(--color-primary)' }
-                      : {}
-                  }
+                  size="sm"
+                  className={cn('shrink-0', activeTab === key && 'shadow-sm')}
                 >
                   {CATEGORY_LABELS[key]}
-                </button>
+                </Button>
               ))}
             </div>
           </motion.div>
@@ -339,7 +324,7 @@ export default function Services({ services }: ServicesProps) {
         </div>
 
         {sorted.length === 0 && (
-          <p className="text-center text-[var(--color-foreground)]/50 py-12">
+          <p className="text-center text-foreground/50 py-12">
             Ingen tjenester i denne kategorien ennå.
           </p>
         )}
