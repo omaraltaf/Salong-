@@ -98,7 +98,7 @@ function StatPillList() {
           variants={pillVariants}
           className={cn(
             'inline-flex items-center gap-1.5 rounded-full px-4 py-2',
-            'bg-[var(--color-secondary)] text-sm font-medium text-[var(--color-primary)]',
+            'bg-secondary text-sm font-medium text-primary',
           )}
         >
           {pill.label}
@@ -118,7 +118,7 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
   return (
     <section
       id="om-oss"
-      className="bg-[var(--color-background)] py-24 md:py-32"
+      className="bg-background py-24 md:py-32"
       aria-labelledby="about-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -135,7 +135,7 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
           >
             {/* Decorative background rectangle */}
             <div
-              className="absolute -bottom-4 -left-4 h-full w-full rounded-2xl bg-[var(--color-accent)]"
+              className="absolute -bottom-4 -left-4 h-full w-full rounded-2xl bg-accent"
               aria-hidden="true"
             />
 
@@ -172,7 +172,7 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
             {/* Eyebrow label */}
             <motion.span
               variants={fadeUp}
-              className="mb-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)]"
+              className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary"
             >
               Om oss
             </motion.span>
@@ -181,7 +181,7 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
             <motion.h2
               id="about-heading"
               variants={slideInRight}
-              className="font-heading text-4xl font-bold leading-tight tracking-tight text-[var(--color-foreground)] md:text-5xl"
+              className="font-heading text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl"
             >
               {heading}
             </motion.h2>
@@ -197,13 +197,13 @@ export default function About({ heading, text, imageUrl }: AboutProps) {
             <motion.div
               variants={fadeUp}
               className={cn(
-                'prose prose-neutral mt-6 max-w-none text-[var(--color-foreground)]/70',
+                'prose prose-neutral mt-6 max-w-none text-foreground/70',
                 // Prose overrides to match the design system
                 '[&_p]:leading-relaxed [&_p]:text-base',
-                '[&_strong]:font-semibold [&_strong]:text-[var(--color-foreground)]',
-                '[&_ul]:space-y-1 [&_li]:text-[var(--color-foreground)]/70',
-                '[&_h2]:font-heading [&_h2]:text-[var(--color-foreground)]',
-                '[&_h3]:font-heading [&_h3]:text-[var(--color-foreground)]',
+                '[&_strong]:font-semibold [&_strong]:text-foreground',
+                '[&_ul]:space-y-1 [&_li]:text-foreground/70',
+                '[&_h2]:font-heading [&_h2]:text-foreground',
+                '[&_h3]:font-heading [&_h3]:text-foreground',
               )}
               // Text comes from CMS (Tiptap HTML stored in Supabase)
               // eslint-disable-next-line react/no-danger
