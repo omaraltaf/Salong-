@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -212,9 +212,15 @@ function CalendarStep({
   availableTimeslots: Timeslot[]
   bookingWindowDays: number
 }) {
-  const today = startOfDay(new Date())
+  const [isClient, setIsClient] = useState(false)
+  const today = isClient ? startOfDay(new Date()) : startOfDay(new Date('2026-06-10'))
   const maxDate = addDays(today, bookingWindowDays)
   const [viewMonth, setViewMonth] = useState<Date>(today)
+
+  // Ensure we're on client before rendering dates
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const datesWithSlots = new Set(
     availableTimeslots.filter((t) => t.is_available).map((t) => t.date),
