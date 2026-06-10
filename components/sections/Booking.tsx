@@ -212,15 +212,9 @@ function CalendarStep({
   availableTimeslots: Timeslot[]
   bookingWindowDays: number
 }) {
-  const [isClient, setIsClient] = useState(false)
-  const today = isClient ? startOfDay(new Date()) : startOfDay(new Date('2026-06-10'))
+  const today = startOfDay(new Date())
   const maxDate = addDays(today, bookingWindowDays)
   const [viewMonth, setViewMonth] = useState<Date>(today)
-
-  // Ensure we're on client before rendering dates
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   const datesWithSlots = new Set(
     availableTimeslots.filter((t) => t.is_available).map((t) => t.date),
@@ -662,7 +656,7 @@ function SuccessMessage({ serviceName, selectedDate, startTime }: { serviceName:
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function Booking({ services, initialTimeslots, bookingWindowDays }: BookingProps) {
+function BookingContent({ services, initialTimeslots, bookingWindowDays }: BookingProps) {
   const [currentStep, setCurrentStep] = useState<StepNumber>(1)
   const [direction, setDirection] = useState(1)
   const [selectedService, setSelectedService] = useState<Service | null>(null)
@@ -906,4 +900,28 @@ export default function Booking({ services, initialTimeslots, bookingWindowDays 
       </div>
     </section>
   )
+}
+
+// Wrapper component to handle client-side rendering
+export default function Booking(props: BookingProps) {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return (
+      <section id="booking" className="relative py-20 md:py-28 lg:py-32 bg-background">
+        <div className="container mx-auto max-w-2xl px-4">
+          <div className="animate-pulse">
+            <div className="h-8 bg-secondary rounded w-48 mb-6"></div>
+            <div className="h-96 bg-secondary rounded"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  return <BookingContent {...props} />
 }
