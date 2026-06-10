@@ -15,15 +15,27 @@ export async function createBooking(data: BookingFormData) {
 
   const supabase = await createClient()
 
-  // Get timeslot and service details
-  const { data: timeslot } = await supabase
+  // Get timeslot details
+  const { data: timeslot, error: timeslotError } = await supabase
     .from('timeslots')
-    .select('*, services(*)')
+    .select('*')
     .eq('id', parsed.data.timeslot_id)
     .single()
 
-  if (!timeslot || !timeslot.is_available) {
+  if (timeslotError || !timeslot || !timeslot.is_available) {
+    console.error('Timeslot fetch error:', timeslotError)
     return { error: 'Denne timen er ikke lenger tilgjengelig. Vennligst velg en annen.' }
+  }
+
+  // Get service details
+  const { data: service, error: serviceError } = await supabase
+    .from('services')
+    .select('name')
+    .eq('id', parsed.data.service_id)
+    .single()
+
+  if (serviceError) {
+    console.error('Service fetch error:', serviceError)
   }
 
   // Create booking
@@ -42,6 +54,7 @@ export async function createBooking(data: BookingFormData) {
     .single()
 
   if (bookingError) {
+    console.error('Booking creation error:', bookingError)
     return { error: 'Noe gikk galt. Vennligst prøv igjen.' }
   }
 
@@ -52,50 +65,57 @@ export async function createBooking(data: BookingFormData) {
     .eq('id', parsed.data.timeslot_id)
 
   // Send emails (fire and forget, don't block on email errors)
-  const serviceName = (timeslot as any).services?.name ?? 'Ukjent tjeneste'
+  const serviceName = service?.name ?? 'Ukjent tjeneste'
   const dateStr = formatDate(timeslot.date)
   const timeStr = formatTime(timeslot.start_time)
 
-  try {
-    await Promise.all([
-      resend.emails.send({
-        from: `${salonConfig.name} <no-reply@bluepoint.no>`,
-        to: parsed.data.customer_email,
-        subject: `Vi har mottatt din forespørsel – ${salonConfig.name}`,
-        html: `
-          <h2>Takk for din bestilling, ${parsed.data.customer_name}!</h2>
-          <p>Vi har mottatt din timeforespørsel og vil bekrefte den snart.</p>
-          <ul>
-            <li><strong>Tjeneste:</strong> ${serviceName}</li>
-            <li><strong>Dato:</strong> ${dateStr}</li>
-            <li><strong>Tid:</strong> ${timeStr}</li>
-          </ul>
-          <p>Du vil motta en bekreftelse på e-post så snart vi har godkjent bookingen.</p>
-          <p>Mvh ${salonConfig.name}</p>
-        `,
-      }),
-      resend.emails.send({
-        from: `${salonConfig.name} <no-reply@bluepoint.no>`,
-        to: process.env.ADMIN_EMAIL!,
-        subject: `Ny timeforespørsel fra ${parsed.data.customer_name} – ${salonConfig.name}`,
-        html: `
-          <h2>Ny timeforespørsel</h2>
-          <ul>
-            <li><strong>Navn:</strong> ${parsed.data.customer_name}</li>
-            <li><strong>E-post:</strong> ${parsed.data.customer_email}</li>
-            <li><strong>Telefon:</strong> ${parsed.data.customer_phone}</li>
-            <li><strong>Tjeneste:</strong> ${serviceName}</li>
-            <li><strong>Dato:</strong> ${dateStr}</li>
-            <li><strong>Tid:</strong> ${timeStr}</li>
-            ${parsed.data.notes ? `<li><strong>Notat:</strong> ${parsed.data.notes}</li>` : ''}
-          </ul>
-          <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/bookings">Åpne adminpanel</a></p>
-        `,
-      }),
-    ])
-  } catch (emailError) {
-    // Email failed - booking still succeeded
-    console.error('Email send failed:', emailError)
+  // Send confirmation emails (fire and forget, don't block on email errors)
+  const adminEmail = process.env.ADMIN_EMAIL
+
+  if (adminEmail && process.env.RESEND_API_KEY) {
+    try {
+      await Promise.all([
+        resend.emails.send({
+          from: `${salonConfig.name} <bookings@bluepoint.no>`,
+          to: parsed.data.customer_email,
+          subject: `Vi har mottatt din forespørsel – ${salonConfig.name}`,
+          html: `
+            <h2>Takk for din bestilling, ${parsed.data.customer_name}!</h2>
+            <p>Vi har mottatt din timeforespørsel og vil bekrefte den snart.</p>
+            <ul>
+              <li><strong>Tjeneste:</strong> ${serviceName}</li>
+              <li><strong>Dato:</strong> ${dateStr}</li>
+              <li><strong>Tid:</strong> ${timeStr}</li>
+            </ul>
+            <p>Du vil motta en bekreftelse på e-post så snart vi har godkjent bookingen.</p>
+            <p>Mvh ${salonConfig.name}</p>
+          `,
+        }),
+        resend.emails.send({
+          from: `${salonConfig.name} <bookings@bluepoint.no>`,
+          to: adminEmail,
+          subject: `Ny timeforespørsel fra ${parsed.data.customer_name} – ${salonConfig.name}`,
+          html: `
+            <h2>Ny timeforespørsel</h2>
+            <ul>
+              <li><strong>Navn:</strong> ${parsed.data.customer_name}</li>
+              <li><strong>E-post:</strong> ${parsed.data.customer_email}</li>
+              <li><strong>Telefon:</strong> ${parsed.data.customer_phone}</li>
+              <li><strong>Tjeneste:</strong> ${serviceName}</li>
+              <li><strong>Dato:</strong> ${dateStr}</li>
+              <li><strong>Tid:</strong> ${timeStr}</li>
+              ${parsed.data.notes ? `<li><strong>Notat:</strong> ${parsed.data.notes}</li>` : ''}
+            </ul>
+            <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin/bookings">Åpne adminpanel</a></p>
+          `,
+        }),
+      ])
+    } catch (emailError) {
+      // Email failed - booking still succeeded
+      console.error('Email send failed:', emailError)
+    }
+  } else {
+    console.warn('Email sending disabled - missing ADMIN_EMAIL or RESEND_API_KEY')
   }
 
   return { success: true, bookingId: booking.id }
