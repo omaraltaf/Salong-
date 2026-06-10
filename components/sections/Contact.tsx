@@ -8,6 +8,7 @@ import { cn, isOpenNow, DAYS_NB } from '@/lib/utils'
 import { salonConfig } from '@/config/salon.config'
 import { contactSchema, type ContactFormData } from '@/lib/validations'
 import { useToast } from '@/hooks/useToast'
+import { Button } from '@/components/ui/button'
 import ToastContainer from '@/components/ui/Toast'
 
 // ---------------------------------------------------------------------------
@@ -142,21 +143,18 @@ function SuccessState({ onReset }: { onReset: () => void }) {
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col items-center justify-center gap-5 py-16 text-center"
     >
-      <CheckCircleIcon className="text-emerald-500" />
+      <CheckCircleIcon className="text-primary" />
       <div>
-        <p className="font-heading text-2xl font-semibold text-[var(--color-foreground)]">
+        <p className="font-heading text-2xl font-semibold text-foreground">
           Takk for meldingen!
         </p>
-        <p className="mt-2 text-[var(--color-foreground)]/60">
+        <p className="mt-2 text-foreground/60">
           Vi tar kontakt snart.
         </p>
       </div>
-      <button
-        onClick={onReset}
-        className="mt-2 text-sm font-medium text-[var(--color-primary)] underline-offset-4 hover:underline"
-      >
+      <Button variant="link" onClick={onReset} className="mt-2">
         Send en ny melding
-      </button>
+      </Button>
     </motion.div>
   )
 }
@@ -193,23 +191,23 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
   }
 
   const inputBase =
-    'w-full rounded-lg bg-[var(--color-secondary)] px-4 py-3 text-sm text-[var(--color-foreground)] placeholder-[var(--color-foreground)]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/30 ring-1 ring-[var(--color-accent)]/20'
+    'w-full rounded-full bg-secondary px-4 py-3 text-sm text-foreground placeholder-foreground/40 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 ring-1 ring-accent/20'
 
-  const errorBase = 'mt-1.5 text-xs text-rose-500'
+  const errorBase = 'mt-1.5 text-xs text-destructive'
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-6">
       {/* Navn */}
       <div>
-        <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
-          Navn <span aria-hidden="true" className="text-rose-400">*</span>
+        <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-foreground">
+          Navn <span aria-hidden="true" className="text-destructive">*</span>
         </label>
         <input
           id="contact-name"
           type="text"
           autoComplete="name"
           placeholder="Ditt navn"
-          className={cn(inputBase, errors.name && 'border-rose-400 focus:ring-rose-400/20')}
+          className={cn(inputBase, errors.name && 'border-destructive focus:ring-destructive/20')}
           {...register('name')}
         />
         {errors.name && <p className={errorBase} role="alert">{errors.name.message}</p>}
@@ -217,15 +215,15 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
 
       {/* E-post */}
       <div>
-        <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
-          E-post <span aria-hidden="true" className="text-rose-400">*</span>
+        <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-foreground">
+          E-post <span aria-hidden="true" className="text-destructive">*</span>
         </label>
         <input
           id="contact-email"
           type="email"
           autoComplete="email"
           placeholder="din@epost.no"
-          className={cn(inputBase, errors.email && 'border-rose-400 focus:ring-rose-400/20')}
+          className={cn(inputBase, errors.email && 'border-destructive focus:ring-destructive/20')}
           {...register('email')}
         />
         {errors.email && <p className={errorBase} role="alert">{errors.email.message}</p>}
@@ -233,16 +231,16 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
 
       {/* Telefon (valgfritt) */}
       <div>
-        <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
+        <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-foreground">
           Telefon{' '}
-          <span className="text-xs font-normal text-[var(--color-foreground)]/50">(valgfritt)</span>
+          <span className="text-xs font-normal text-foreground/50">(valgfritt)</span>
         </label>
         <input
           id="contact-phone"
           type="tel"
           autoComplete="tel"
           placeholder="+47 XXX XX XXX"
-          className={cn(inputBase, errors.phone && 'border-rose-400 focus:ring-rose-400/20')}
+          className={cn(inputBase, errors.phone && 'border-destructive focus:ring-destructive/20')}
           {...register('phone')}
         />
         {errors.phone && <p className={errorBase} role="alert">{errors.phone.message}</p>}
@@ -250,29 +248,21 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
 
       {/* Melding */}
       <div>
-        <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-[var(--color-foreground)]">
-          Melding <span aria-hidden="true" className="text-rose-400">*</span>
+        <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-foreground">
+          Melding <span aria-hidden="true" className="text-destructive">*</span>
         </label>
         <textarea
           id="contact-message"
           rows={5}
           placeholder="Skriv din melding her…"
-          className={cn(inputBase, 'resize-none', errors.message && 'border-rose-400 focus:ring-rose-400/20')}
+          className={cn(inputBase, 'resize-none', errors.message && 'border-destructive focus:ring-destructive/20')}
           {...register('message')}
         />
         {errors.message && <p className={errorBase} role="alert">{errors.message.message}</p>}
       </div>
 
       {/* Submit */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className={cn(
-          'relative flex items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 transition-all',
-          'hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2',
-          isSubmitting && 'cursor-not-allowed opacity-70',
-        )}
-      >
+      <Button type="submit" variant="primary" disabled={isSubmitting} className="relative">
         {isSubmitting ? (
           <>
             <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -284,7 +274,7 @@ function ContactForm({ onSuccess, onError }: ContactFormProps) {
         ) : (
           'Send melding'
         )}
-      </button>
+      </Button>
     </form>
   )
 }
@@ -358,7 +348,7 @@ function OpeningHoursTable({ openingHours }: { openingHours: OpeningHour[] }) {
                 <td
                   className={cn(
                     'py-2 pr-4 font-medium',
-                    isToday ? 'text-[var(--color-primary)]' : 'text-[var(--color-foreground)]',
+                    isToday ? 'text-[var(--color-primary)]' : 'text-foreground',
                   )}
                 >
                   {dayName}
@@ -368,8 +358,8 @@ function OpeningHoursTable({ openingHours }: { openingHours: OpeningHour[] }) {
                   className={cn(
                     'py-2 text-right',
                     isClosed
-                      ? 'text-[var(--color-foreground)]/40'
-                      : 'text-[var(--color-foreground)]/80',
+                      ? 'text-foreground/40'
+                      : 'text-foreground/80',
                   )}
                 >
                   {timeStr}
@@ -413,12 +403,12 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
           >
             <h2
               id="contact-heading"
-              className="font-heading text-3xl font-semibold tracking-tight text-[var(--color-foreground)] sm:text-4xl lg:text-5xl"
+              className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
               {heading}
             </h2>
             {subheading && (
-              <p className="mt-4 text-base text-[var(--color-foreground)]/60 sm:text-lg">
+              <p className="mt-4 text-base text-foreground/60 sm:text-lg">
                 {subheading}
               </p>
             )}
@@ -434,7 +424,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
               transition={{ duration: 0.6, delay: 0.1 }}
               className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30"
             >
-              <h3 className="mb-6 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
+              <h3 className="mb-6 font-heading text-2xl font-semibold text-foreground">
                 Send oss en melding
               </h3>
 
@@ -465,13 +455,13 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
             >
               {/* Contact details */}
               <div className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30">
-                <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
+                <h3 className="mb-5 font-heading text-2xl font-semibold text-foreground">
                   Finn oss
                 </h3>
 
                 <ul className="flex flex-col gap-4">
                   {/* Address */}
-                  <li className="flex items-start gap-3 text-sm text-[var(--color-foreground)]/80">
+                  <li className="flex items-start gap-3 text-sm text-foreground/80">
                     <MapPinIcon className="mt-0.5 text-[var(--color-primary)]" />
                     <span>{salonConfig.address}</span>
                   </li>
@@ -481,7 +471,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
                     <PhoneIcon className="mt-0.5 text-[var(--color-primary)]" />
                     <a
                       href={`tel:${salonConfig.phone.replace(/\s/g, '')}`}
-                      className="font-medium text-[var(--color-foreground)]/80 underline-offset-4 transition-colors hover:text-[var(--color-primary)] hover:underline"
+                      className="font-medium text-foreground/80 underline-offset-4 transition-colors hover:text-[var(--color-primary)] hover:underline"
                     >
                       {salonConfig.phone}
                     </a>
@@ -498,7 +488,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={link.platform}
-                        className="flex size-9 items-center justify-center rounded-lg bg-[var(--color-muted)] text-[var(--color-foreground)]/60 transition-colors hover:bg-[var(--color-accent)] hover:text-[var(--color-primary)]"
+                        className="flex size-9 items-center justify-center rounded-lg bg-[var(--color-muted)] text-foreground/60 transition-colors hover:bg-[var(--color-accent)] hover:text-[var(--color-primary)]"
                       >
                         {link.platform.toLowerCase() === 'facebook' ? (
                           <FacebookIcon />
@@ -513,7 +503,7 @@ export default function Contact({ heading, subheading, openingHours, socialLinks
 
               {/* Opening hours */}
               <div className="rounded-2xl bg-[var(--color-secondary)] p-8 shadow-lg shadow-black/30">
-                <h3 className="mb-5 font-heading text-2xl font-semibold text-[var(--color-foreground)]">
+                <h3 className="mb-5 font-heading text-2xl font-semibold text-foreground">
                   Åpningstider
                 </h3>
                 <OpeningHoursTable openingHours={openingHours} />

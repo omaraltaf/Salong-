@@ -26,11 +26,11 @@ const config: Config = {
         foreground: 'var(--color-foreground)',
         primary: {
           DEFAULT: 'var(--color-primary)',
-          foreground: '#FFFFFF',
+          foreground: '#000000',
         },
         secondary: {
           DEFAULT: 'var(--color-secondary)',
-          foreground: '#FFFFFF',
+          foreground: 'var(--color-foreground)',
         },
         accent: {
           DEFAULT: 'var(--color-accent)',
@@ -62,6 +62,19 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        card: '0 10px 15px -3px rgb(0 0 0 / 0.3)',
+        sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+      },
+      spacing: {
+        xs: '0.25rem',
+        sm: '0.5rem',
+        md: '1rem',
+        lg: '1.5rem',
+        xl: '2rem',
+        '2xl': '2.5rem',
+        '3xl': '3rem',
       },
       keyframes: {
         'accordion-down': {

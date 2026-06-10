@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { salonConfig } from '@/config/salon.config'
+import { Button } from '@/components/ui/button'
 
 interface NavLink {
   label: string
@@ -60,16 +61,16 @@ function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             ))}
           </nav>
 
-          <button
-            type="button"
+          <Button
+            variant="primary"
             onClick={() => {
               onClose()
               setTimeout(() => scrollToSection('#booking'), 100)
             }}
-            className="mt-10 rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-95"
+            className="mt-10"
           >
             Book time
-          </button>
+          </Button>
         </motion.div>
       )}
     </AnimatePresence>
@@ -83,17 +84,18 @@ interface HamburgerButtonProps {
 
 function HamburgerButton({ isOpen, onClick }: HamburgerButtonProps) {
   return (
-    <button
-      type="button"
+    <Button
+      variant="ghost"
+      size="icon"
       onClick={onClick}
       aria-label={isOpen ? 'Lukk meny' : 'Åpne meny'}
       aria-expanded={isOpen}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-secondary)] text-[var(--color-foreground)] transition hover:bg-[var(--color-accent)]/10"
+      className="relative bg-secondary text-foreground hover:bg-secondary/80"
     >
       <span className="absolute h-px w-5 bg-current" />
       <span className="absolute h-px w-5 bg-current rotate-45" />
       <span className="absolute h-px w-5 bg-current -rotate-45" />
-    </button>
+    </Button>
   )
 }
 
@@ -126,13 +128,9 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden md:block">
-            <button
-              type="button"
-              onClick={() => scrollToSection('#booking')}
-              className="rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-95"
-            >
+            <Button variant="primary" onClick={() => scrollToSection('#booking')}>
               Book time
-            </button>
+            </Button>
           </div>
 
           <div className="md:hidden">

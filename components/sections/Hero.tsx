@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 
 interface HeroProps {
   headline: string
@@ -44,20 +45,12 @@ export default function Hero({ headline, subheading, heroImageUrl }: HeroProps) 
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <button
-              type="button"
-              onClick={() => scrollToSection('#booking')}
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-95"
-            >
+            <Button variant="primary" onClick={() => scrollToSection('#booking')}>
               Book time
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection('#tjenester')}
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-secondary)] px-6 py-3 text-sm font-semibold text-[var(--color-accent)] transition hover:bg-[var(--color-secondary)]/80"
-            >
+            </Button>
+            <Button variant="secondary" onClick={() => scrollToSection('#tjenester')}>
               Se tjenester
-            </button>
+            </Button>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">

@@ -2,14 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Design System - Color Palette
+ *
+ * Primary (#C4A882): Gold/tan for CTAs, accents, and primary elements
+ * Secondary (#1a2f4a): Dark navy for cards, containers, backgrounds
+ * Accent (#E8D5C4): Light cream for highlights and secondary interactive states
+ * Background (#070A12): Pure black background for maximum contrast
+ * Foreground (#F8F6F1): Off-white text and primary content
+ * Muted (#111827): Dark gray for borders and subtle backgrounds
+ *
+ * Usage:
+ * - Use primary for all primary buttons and CTAs
+ * - Use secondary for all card backgrounds and containers
+ * - Use accent for highlights, secondary buttons, and hover states
+ * - Use background for page backgrounds (only)
+ * - Use foreground for all text content
+ * - Use muted for borders and subtle dividers
+ */
+
 :root {
+  /* Color Tokens */
   --color-primary: #C4A882;
   --color-secondary: #1a2f4a;
   --color-accent: #E8D5C4;
   --color-background: #070A12;
   --color-foreground: #F8F6F1;
   --color-muted: #111827;
+
+  /* Spacing & Layout */
   --radius: 0.75rem;
+
+  /* Semantic Color Tokens */
   --border: 216 18% 22%;
   --input: 216 18% 16%;
   --ring: 42 100% 78%;

@@ -1,5 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { salonConfig } from '@/config/salon.config'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import Navbar from '@/components/sections/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
@@ -87,10 +89,10 @@ export default async function HomePage() {
               <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-foreground)]/60">Bestill raskt</p>
               <p className="mt-4 text-xl font-semibold text-[var(--color-foreground)]">Book time direkte i dag — eller ring oss for raskeste respons.</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#booking" className="inline-flex rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-95">
+                <a href="#booking" className={cn(buttonVariants({ variant: 'primary' }))}>
                   Book time
                 </a>
-                <a href="#contact" className="inline-flex rounded-full bg-[var(--color-secondary)] px-6 py-3 text-sm font-semibold text-[var(--color-accent)] transition hover:bg-[var(--color-secondary)]/80">
+                <a href="#contact" className={cn(buttonVariants({ variant: 'secondary' }))}>
                   Kontakt oss
                 </a>
               </div>
