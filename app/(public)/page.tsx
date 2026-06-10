@@ -6,7 +6,6 @@ import Navbar from '@/components/sections/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Services from '@/components/sections/Services'
-import Pricing from '@/components/sections/Pricing'
 import Booking from '@/components/sections/Booking'
 import Testimonials from '@/components/sections/Testimonials'
 import Contact from '@/components/sections/Contact'
@@ -21,7 +20,6 @@ export default async function HomePage() {
   const [
     { data: contentBlocks },
     { data: services },
-    { data: servicesWithPricing },
     { data: timeslots },
     { data: testimonials },
     { data: gallery },
@@ -30,7 +28,6 @@ export default async function HomePage() {
   ] = await Promise.all([
     supabase.from('content_blocks').select('*'),
     supabase.from('services').select('*').eq('is_active', true).order('sort_order'),
-    supabase.from('services').select('*, pricing(*)').eq('is_active', true).order('sort_order'),
     supabase.from('timeslots').select('*').eq('is_available', true).gte('date', new Date().toISOString().split('T')[0]),
     supabase.from('testimonials').select('*').eq('is_published', true).order('sort_order'),
     supabase.from('gallery').select('*').eq('is_active', true).order('sort_order'),
@@ -102,7 +99,6 @@ export default async function HomePage() {
       </div>
       <About heading={content('about_heading', 'Om Blue Point')} text={content('about_text', '')} imageUrl={aboutImage} />
       <Services services={services ?? []} />
-      <Pricing services={servicesWithPricing ?? []} />
       <Booking services={services ?? []} initialTimeslots={timeslots ?? []} bookingWindowDays={salonConfig.bookingWindowDays} />
       <Testimonials testimonials={testimonials ?? []} />
       <Contact heading={content('contact_heading', 'Ta kontakt')} subheading={content('contact_subheading', 'Book en time eller send oss en melding')} openingHours={openingHours ?? []} socialLinks={socialLinks ?? []} />

@@ -192,28 +192,36 @@ function ServiceCard({ service }: { service: Service }) {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-4 mt-2">
-        <span className="inline-flex items-center gap-1 text-xs text-foreground/50">
-          <svg
-            className="h-3.5 w-3.5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-          {service.duration_minutes} min
-        </span>
-        {priceLabel && (
-          <span className="text-sm font-semibold text-primary">
-            {priceLabel}
+      <div className="flex flex-col gap-3 pt-4 mt-2 border-t border-foreground/10">
+        <div className="flex items-center justify-between">
+          <span className="inline-flex items-center gap-1 text-xs text-foreground/50">
+            <svg
+              className="h-3.5 w-3.5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            {service.duration_minutes} min
           </span>
-        )}
+          {priceLabel && (
+            <span className="text-sm font-semibold text-primary">
+              {priceLabel}
+            </span>
+          )}
+        </div>
+        <a
+          href="#booking"
+          className="inline-flex justify-center rounded-full bg-primary px-4 py-2 text-xs font-semibold text-black transition hover:opacity-90"
+        >
+          Book time
+        </a>
       </div>
     </motion.article>
   )
