@@ -6,7 +6,7 @@ import Navbar from '@/components/sections/Navbar'
 import Hero from '@/components/sections/Hero'
 import About from '@/components/sections/About'
 import Services from '@/components/sections/Services'
-// import Booking from '@/components/sections/Booking'
+import BookingSimple from '@/components/sections/BookingSimple'
 import Testimonials from '@/components/sections/Testimonials'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
@@ -99,7 +99,7 @@ export default async function HomePage() {
       </div>
       <About heading={content('about_heading', 'Om Blue Point')} text={content('about_text', '')} imageUrl={aboutImage} />
       <Services services={services ?? []} />
-      {/* <Booking services={services ?? []} initialTimeslots={timeslots ?? []} bookingWindowDays={salonConfig.bookingWindowDays} /> */}
+      <BookingSimple services={services ?? []} initialTimeslots={timeslots ?? []} />
       <Testimonials testimonials={testimonials ?? []} />
       <Contact heading={content('contact_heading', 'Ta kontakt')} subheading={content('contact_subheading', 'Book en time eller send oss en melding')} openingHours={openingHours ?? []} socialLinks={socialLinks ?? []} />
       <Footer tagline={content('footer_tagline', 'Profesjonell hårpleie med personlig touch siden 1986.')} socialLinks={socialLinks ?? []} />
